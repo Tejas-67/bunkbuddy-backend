@@ -15,14 +15,13 @@ const logIn = async (req, resp) => {
       throw new error("invalid input ");
     }
 
-    const result = await User.findOne(query);
+    const resultLogin = await User.findOne(query);
 
-    if (!result) {
+    if (!resultLogin) {
       return resp.status(302).json({ message: "User doesn't exist" });
     }
-    return resp.status(200).json(result);
+    return resp.status(200).json(resultLogin);
   } catch (error) {
-    error.message("server error in login");
     return resp.status(400).json(error);
   }
 };
