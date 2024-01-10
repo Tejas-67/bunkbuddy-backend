@@ -22,7 +22,6 @@ app.use("/signup", signupRouter);
 app.use("/update-username", updateUsernameRouter);
 app.use("/update-password", updatePasswordRouter);
 app.use("/allusers", allUsersRouter);
-3000;
 
 //for handling error 404
 app.use((req, res, next) => {
@@ -36,7 +35,6 @@ app.use((err, req, res, next) => {
   console.log(err);
   res.status(500).send({ message: err.message });
 });
-
 
 // app.use((req, res, next) => {
 //   console.log(req.method);
