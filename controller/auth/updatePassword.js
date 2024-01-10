@@ -33,10 +33,9 @@ const updatePassword = async (req, resp) => {
   } catch (error) {
     console.log("Error in updating password", error);
 
-    return resp
-      .status(400)
-      .json(new Error("error at update password check the log for detail"));
+    const dispatchedError = { message: error.message, code: error.code };
+    return resp.status(400).json(dispatchedError);
   }
 };
 
-module.exports=updatePassword;
+module.exports = updatePassword;

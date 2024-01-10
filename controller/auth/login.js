@@ -22,7 +22,10 @@ const logIn = async (req, resp) => {
     }
     return resp.status(200).json(resultLogin);
   } catch (error) {
-    return resp.status(400).json(error);
+    console.log("error at login controller , error: ", error);
+
+    const dispatchedError = { message: error.message, code: error.code };
+    return resp.status(400).json(dispatchedError);
   }
 };
 

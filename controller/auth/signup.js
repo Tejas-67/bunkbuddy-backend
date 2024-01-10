@@ -39,8 +39,10 @@ const signup = async (req, resp) => {
     } else {
       return resp.status(302).json({ message: "Email already exists" });
     }
-  } catch (err) {
-    resp.status(400).json(err);
+  } catch (error) {
+    console.log("Error in signup controller", error);
+    const dispatchedError = { message: error.message, code: error.code };
+    return resp.status(400).json(dispatchedError);
   }
 };
 
