@@ -21,7 +21,10 @@ const logIn = async (req, resp) => {
       return resp.status(302).json({ message: "User doesn't exist" });
     }
     return resp.status(200).json(result);
-  } catch (error) {}
+  } catch (error) {
+    error.message("server error in login");
+    return resp.status(400).json(error);
+  }
 };
 
 module.exports = logIn;
