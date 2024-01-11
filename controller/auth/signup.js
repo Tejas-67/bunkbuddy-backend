@@ -34,7 +34,7 @@ const signup = async (req, resp) => {
     const query = { email: userInfo.email };
     const dbResponse = await User.findOne(query);
     if (dbResponse == null) {
-      const dbSaveResponse = await User.save(user);
+      const dbSaveResponse = await user.save();
       return resp.status(200).json(dbSaveResponse);
     } else {
       return resp.status(302).json({ message: "Email already exists" });

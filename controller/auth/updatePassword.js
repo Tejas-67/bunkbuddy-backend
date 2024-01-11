@@ -16,7 +16,7 @@ const updatePassword = async (req, resp) => {
     };
     const validatorResult = dataSchema.safeParse(userInput);
     if (!validatorResult.success) {
-      return resp.status(400).json(new Error("input credential not good"));
+      return resp.status(400).json({ message: validatorResult.error.message });
     }
     const query = {
       email: userInput.email,

@@ -10,9 +10,9 @@ const logIn = async (req, resp) => {
     const query = { email: req.query.email, password: req.query.password };
 
     const validator = credentialSchema.safeParse(query);
-
+    
     if (!validator.success) {
-      throw new error("invalid input ");
+      return resp.status(400).json({ message: validator.error.message });
     }
 
     const resultLogin = await User.findOne(query);

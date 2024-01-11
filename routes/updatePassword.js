@@ -1,7 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const updatePasswordController=require('../controller/updatePassword');
+const updatePasswordController = require("../controller/auth/updatePassword");
 
-router.get('/',updatePasswordController);
+router.get("/", updatePasswordController);
 
-module.exports=router;
+module.exports = router;

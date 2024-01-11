@@ -18,7 +18,7 @@ const updateUsername = async (req, resp) => {
     const validator = inputSchema.safeParse(userData);
 
     if (!validator.success) {
-      throw new error("invalid input");
+      return resp.status(400).json({ message: validator.error.message });
     }
     const query = { email: userData.email, password: userData.password };
 
