@@ -5,7 +5,7 @@ const inputSchema = zod.object({
     email: zod.string().email(),
     password: zod.string().min(3).max(50),
     username: zod.string().min(3).max(50),
-    image: zod.string().min(3).max(50)
+    image: zod.string()
 });
 
 const update = async (req, res)=> {
