@@ -14,7 +14,7 @@ const updateUsername = async (req, resp) => {
       password: req.query.password,
       newUsername: req.query.newUsername,
     };
-
+    
     const validator = inputSchema.safeParse(userData);
 
     if (!validator.success) {
