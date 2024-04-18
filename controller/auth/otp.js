@@ -79,7 +79,7 @@ const verifyOtp = async(req, res) => {
             const dbUser = await User.findOne(query);
 
             if(!dbUser) return res.status(400).json({message: "Couldn't find user with given email"});
-            if(dbUser.isVerified==false){
+            if(dbUser.isVerified === false || dbUser.isVerified === null || dbUser.isVerified === undefined){
                 dbUser.isVerified = true;
                 await dbUser.save();
             }
