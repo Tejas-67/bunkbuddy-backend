@@ -1,21 +1,12 @@
 const User = require("../../models/user");
 const zod = require("zod");
 
-/*
-app.get("/signup", (req, res) => {
-  const user = new User({
-    name: req.query.name,
-    email: req.query.email,
-    password: req.query.password,
-    image: req.query.image,
-  });
- */
-
 const userSchema = zod.object({
   name: zod.string().min(3).max(50),
   email: zod.string().email(),
   password: zod.string().min(1),
   image: zod.string(),
+  isVerified: zod.boolean()
 });
 
 const signup = async (req, resp) => {
@@ -25,6 +16,7 @@ const signup = async (req, resp) => {
       email: req.query.email,
       password: req.query.password,
       image: req.query.image,
+      isVerified: false
     };
     const result = userSchema.safeParse(userInfo);
     if (!result.success) {
@@ -37,7 +29,7 @@ const signup = async (req, resp) => {
       const dbSaveResponse = await user.save();
       return resp.status(200).json(dbSaveResponse);
     } else {
-      return resp.status(302).json({ message: "Email already exists" });
+      return resp.status(302).json({ message: "Email already exists"});
     }
   } catch (error) {
     console.log("Error in signup controller", error);

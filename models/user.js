@@ -17,6 +17,10 @@ const userSchema = new Schema({
     image: {
         type: String,
         required: false
+    },
+    isVerified: {
+        type: Boolean,
+        required: true
     }
 }, {timestamps: true});
 
