@@ -14,6 +14,7 @@ const updatePasswordRouter = require("./routes/updatePassword");
 const allUsersRouter = require("./routes/allUsers");
 const update = require('./routes/update');
 const otp = require('./routes/otp');
+const backup = require('./routes/backup');
 
 app.get("/test", (req, res) => {
   res.send("server is working");
@@ -26,6 +27,7 @@ app.use("/update-password", updatePasswordRouter);
 app.use("/allusers", allUsersRouter);
 app.use("/update", update);
 app.use("/otp", otp);
+app.use("/backup", backup);
 app.use((req, res, next) => {
   const error = new Error(`Not Found - ${req.originalUrl}`);
   res.status(404);
